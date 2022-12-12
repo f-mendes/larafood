@@ -47,6 +47,8 @@
                             <td style="width=10px;">
                                 <a href="{{ route('plans.edit', $plan->url) }}" class="btn btn-info">Editar</a>
                                 <a href="{{ route('plans.show', $plan->url) }}" class="btn btn-warning">Ver</a>
+                                <a href="{{ route('details.plan.index', $plan->url) }}" class="btn btn-primary">Detalhes</a>
+
                             </td>
                         </tr>
                     @endforeach

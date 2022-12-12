@@ -12,7 +12,13 @@ class Plan extends Model
         'price',
         'description',
     ];
+    
+    public function details()
+    {
+        return $this->hasMany(DetailPlan::class);
+    }
 
+    
     public function search($filter = null)
     {
         $results = $this->where('name', 'LIKE', "%{$filter}%")
