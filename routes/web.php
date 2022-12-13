@@ -3,6 +3,10 @@
 Route::prefix('admin')->namespace('Admin')->group(function(){
 
     
+    //Profiles
+    Route::resource('profiles', 'ACL\ProfileController');
+
+    //Plans
     Route::delete('plans/{url}/details/{idDetail}', 'DetailPlanController@destroy')->name('details.plan.destroy');
     Route::get('plans/{url}/details/{idDetail}', 'DetailPlanController@show')->name('details.plan.show');
     Route::put('plans/{url}/details/{idDetail}', 'DetailPlanController@update')->name('details.plan.update');
