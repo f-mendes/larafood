@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\ACL;
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
 use App\Http\Requests\StoreUpdateProfile;
+use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
@@ -57,7 +58,32 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        //
+        $profile = $this->repository->find($id);
+        if(!$profile)
+            return redirect()->back();
+        
+        return view('admin.pages.profiles.show', compact('profile'));
+    }
+
+     /**
+     * Search the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        $filters = $request->only('filter');
+        
+        $profiles = $this->repository->where(function($query) use($request){
+            $query->where('name', 'LIKE', "%{$request->filter}%");
+            $query->orWhere('description', 'LIKE', "%{$request->filter}%");
+            
+        })->paginate();
+        
+    
+        return view('admin.pages.profiles.index', compact('profiles','filters'));
+
     }
 
     /**
@@ -101,6 +127,12 @@ class ProfileController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $profile = $this->repository->find($id);
+        if(!$profile)
+            return redirect()->back();
+        
+        //$this->repository->destroy($id);
+        $profile->delete();
+        return redirect()->route('profiles.index');
     }
 }

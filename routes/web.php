@@ -5,7 +5,7 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
     
     //Profiles
     Route::resource('profiles', 'ACL\ProfileController');
-
+    Route::any('profiles/search', 'ACL\ProfileController@search')->name('profiles.search');
     //Plans
     Route::delete('plans/{url}/details/{idDetail}', 'DetailPlanController@destroy')->name('details.plan.destroy');
     Route::get('plans/{url}/details/{idDetail}', 'DetailPlanController@show')->name('details.plan.show');

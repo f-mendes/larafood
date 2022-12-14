@@ -19,7 +19,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <form action="{{route('plans.search')}}" method="POST">
+            <form action="{{route('profiles.search')}}" method="POST">
                 @csrf
                 <div class="form-group">
                     <div class="row">
@@ -35,6 +35,7 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
+                        <th>Descrição</th>
                         <th width="250">Ações</th>
                     </tr>
                 </thead>
@@ -42,6 +43,7 @@
                     @foreach ($profiles as $profile)
                         <tr>
                             <td>{{ $profile->name }}</td>
+                            <td>{{ $profile->description }}</td>
                             <td style="width=10px;">
                                 <a href="{{ route('profiles.edit', $profile->id) }}" class="btn btn-info">Editar</a>
                                 <a href="{{ route('profiles.show', $profile->id) }}" class="btn btn-warning">Ver</a>
