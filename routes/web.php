@@ -3,6 +3,10 @@
 Route::prefix('admin')->namespace('Admin')->group(function(){
 
     
+    //Permissions
+    Route::resource('permissions', 'ACL\PermissionController');
+    Route::any('permissions/search', 'ACL\PermissionController@search')->name('permissions.search');
+
     //Profiles
     Route::resource('profiles', 'ACL\ProfileController');
     Route::any('profiles/search', 'ACL\ProfileController@search')->name('profiles.search');
