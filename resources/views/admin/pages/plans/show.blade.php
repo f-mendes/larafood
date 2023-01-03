@@ -28,6 +28,12 @@
                 <li>
                     <strong>Descrição: </strong> {{ $plan->description }}
                 </li>
+                <li>
+                    <strong>Perfis: </strong>
+                </li>
+                @foreach ($profiles as $profile)
+                    &emsp; {{ $profile->name }} <br>           
+                @endforeach
             </ul>
             @include('admin.includes.alerts')
             <form action="{{ route('plans.destroy', $plan->url) }}" method="POST">

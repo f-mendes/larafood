@@ -42,8 +42,12 @@ class PlanController extends Controller
         if (!$plan) {
             return redirect()->back();
         }
+
+        $profile = $plan->profiles()->get();
+
         return view('admin.pages.plans.show', [
             'plan' => $plan,
+            'profiles' => $profile,
         ]);
     }
 
