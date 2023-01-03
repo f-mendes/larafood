@@ -22,6 +22,12 @@
                 <li>
                     <strong>Descrição: </strong> {{ $permission->description }}
                 </li>
+                <li>
+                    <strong>Perfis: </strong>
+                </li>
+                @foreach ($profiles as $profile)
+                    &emsp; {{ $profile->name }} <br>           
+                @endforeach
             </ul>
             @include('admin.includes.alerts')
             <form action="{{ route('permissions.destroy', $permission->id) }}" method="POST">
