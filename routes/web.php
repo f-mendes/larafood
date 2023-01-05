@@ -2,10 +2,15 @@
 
 Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function(){
 
+
+    //Category
+    Route::resource('categories', 'CategoryController');
+    Route::any('categories/search', 'CategoryController@search')->name('categories.search');
+
+
     //Users
     Route::resource('users', 'UserController');
     Route::any('users/search', 'UserController@search')->name('users.search');
-
 
     //Plans x Profiles
     Route::get('profiles/{id}/plan/{idPlan}', 'ACL\PlanProfileController@detachPlanProfile')->name('profiles.plans.detach');

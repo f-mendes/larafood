@@ -315,6 +315,13 @@ return [
             'icon' => 'fas fa-users',
             
         ],
+
+        [
+            'text' => 'Categorias',
+            'url'  => 'admin/categories',
+            'icon' => 'fas fa-layer-group',
+            
+        ],
        
     ],
 
