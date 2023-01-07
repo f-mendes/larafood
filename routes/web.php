@@ -3,6 +3,12 @@
 Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function(){
 
 
+    //Permissions x Profiles
+    Route::get('products/{id}/category/{idPCategory}', 'ProductCategoryController@detachCategoryProduct')->name('products.categories.detach');
+    Route::post('products/{id}/categories', 'ProductCategoryController@attachCategoryProduct')->name('products.categories.attach');
+    Route::any('products/{id}/categories/create', 'ProductCategoryController@categoriesAvailable')->name('products.categories.available');
+    Route::get('products/{id}/categories', 'ProductCategoryController@categories')->name('products.categories');
+
 
      //Product
      Route::resource('products', 'ProductController');

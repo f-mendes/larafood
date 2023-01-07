@@ -13,7 +13,23 @@ class Product extends Model
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class, 'product_category');
+    }
+
+    public function categoriesAvailable($filter = null){
+
+        $categories = Category::whereNotIn('id', function($query){
+            $query->select('product_category.category_id');
+            $query->from('product_category');
+            $query->whereRaw("product_category.product_id={$this->id}");
+        })
+        ->where(function($queryFilter) use ($filter){
+            if($filter)
+                $queryFilter->where('categories.name', 'LIKE', "%{$filter}%");
+        })
+        ->paginate();
+
+        return $categories;
     }
 
    
