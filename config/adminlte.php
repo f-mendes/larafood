@@ -329,6 +329,13 @@ return [
             'icon' => 'fas fa-layer-group',
             
         ],
+
+        [
+            'text' => 'Mesas',
+            'url'  => 'admin/tables',
+            'icon' => 'fas fa-tablet',
+            
+        ],
        
     ],
 

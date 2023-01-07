@@ -3,6 +3,10 @@
 Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function(){
 
 
+    //Tables
+    Route::resource('tables', 'TableController');
+    Route::any('tables/search', 'TableController@search')->name('tables.search');
+
     //Permissions x Profiles
     Route::get('products/{id}/category/{idPCategory}', 'ProductCategoryController@detachCategoryProduct')->name('products.categories.detach');
     Route::post('products/{id}/categories', 'ProductCategoryController@attachCategoryProduct')->name('products.categories.attach');
@@ -10,9 +14,9 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function()
     Route::get('products/{id}/categories', 'ProductCategoryController@categories')->name('products.categories');
 
 
-     //Product
-     Route::resource('products', 'ProductController');
-     Route::any('products/search', 'ProductController@search')->name('products.search');
+    //Product
+    Route::resource('products', 'ProductController');
+    Route::any('products/search', 'ProductController@search')->name('products.search');
 
     //Category
     Route::resource('categories', 'CategoryController');
