@@ -7,7 +7,6 @@ return [
      */
     
     'admins' => [
-        'alpacas@mail.com',
-        'admin@mail.com'
+        'felipe@mail.com',
     ]
 ];

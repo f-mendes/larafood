@@ -3,6 +3,10 @@
 Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function(){
 
 
+    Route::get('teste_acl', function () {
+        dd(auth()->user()->permissions());
+    });
+
     //Tables
     Route::resource('tables', 'TableController');
     Route::any('tables/search', 'TableController@search')->name('tables.search');
@@ -17,6 +21,7 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function()
     //Product
     Route::resource('products', 'ProductController');
     Route::any('products/search', 'ProductController@search')->name('products.search');
+    Route::get('/', 'ProductController@index')->name('admin.index');
 
     //Category
     Route::resource('categories', 'CategoryController');
@@ -65,7 +70,10 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function()
     Route::get('plans/{url}', 'PlanController@show')->name('plans.show');
     Route::post('plans', 'PlanController@store')->name('plans.store');
     Route::get('plans', 'PlanController@index')->name('plans.index');
-    Route::get('/', 'PlanController@index')->name('admin.index');
+    
+
+
+    
 });
 
 
