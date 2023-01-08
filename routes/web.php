@@ -3,9 +3,10 @@
 Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function(){
 
 
-    Route::get('teste_acl', function () {
-        dd(auth()->user()->permissions());
-    });
+    //Tenants
+    Route::resource('tenants', 'TenantController');
+    Route::any('tenants/search', 'TenantController@search')->name('tenants.search');
+
 
     //Tables
     Route::resource('tables', 'TableController');
