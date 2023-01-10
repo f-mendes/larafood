@@ -306,6 +306,14 @@ return [
             
         ],
         [
+            'text' => 'Cargos',
+            'url'  => 'admin/roles',
+            'icon' => 'fas fa-user-tag',
+            'can' => 'roles'
+          
+            
+        ],
+        [
             'text' => 'Perfis',
             'url'  => 'admin/profiles',
             'icon' => 'fas fa-address-book',

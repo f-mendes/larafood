@@ -3,6 +3,25 @@
 Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function(){
 
 
+
+    //User x Roles
+    Route::get('users/{id}/role/{idPermission}', 'ACL\RoleUserController@detachRoleUser')->name('users.roles.detach');
+    Route::post('users/{id}/roles', 'ACL\RoleUserController@attachRolesUser')->name('users.roles.attach');
+    Route::any('users/{id}/roles/create', 'ACL\RoleUserController@rolesAvailable')->name('users.roles.available');
+    Route::get('users/{id}/roles', 'ACL\RoleUserController@roles')->name('users.roles');
+
+
+    //Permissions x Roles
+    Route::get('roles/{id}/permission/{idPermission}', 'ACL\PermissionRoleController@detachPermissionRole')->name('roles.permissions.detach');
+    Route::post('roles/{id}/permissions', 'ACL\PermissionRoleController@attachPermissionsRole')->name('roles.permissions.attach');
+    Route::any('roles/{id}/permissions/create', 'ACL\PermissionRoleController@permissionsAvailable')->name('roles.permissions.available');
+    Route::get('roles/{id}/permissions', 'ACL\PermissionRoleController@permissions')->name('roles.permissions');
+
+     
+    //Roles
+    Route::resource('roles', 'ACL\RoleController');
+    Route::any('roles/search', 'ACL\RoleController@search')->name('roles.search');
+
     //Tenants
     Route::resource('tenants', 'TenantController');
     Route::any('tenants/search', 'TenantController@search')->name('tenants.search');
@@ -12,7 +31,7 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function()
     Route::resource('tables', 'TableController');
     Route::any('tables/search', 'TableController@search')->name('tables.search');
 
-    //Permissions x Profiles
+    //Product x Category
     Route::get('products/{id}/category/{idPCategory}', 'ProductCategoryController@detachCategoryProduct')->name('products.categories.detach');
     Route::post('products/{id}/categories', 'ProductCategoryController@attachCategoryProduct')->name('products.categories.attach');
     Route::any('products/{id}/categories/create', 'ProductCategoryController@categoriesAvailable')->name('products.categories.available');
