@@ -3,6 +3,10 @@
 Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function(){
 
 
+    // Route::get('/teste', function(){
+    //     auth()->user()->permissionsRole();
+
+    // });
 
     //User x Roles
     Route::get('users/{id}/role/{idPermission}', 'ACL\RoleUserController@detachRoleUser')->name('users.roles.detach');
