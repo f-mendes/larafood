@@ -18,4 +18,21 @@ Route::group([
     Route::get('/product/{url}', 'ProductApiController@show');
     Route::get('/products', 'ProductApiController@productsByTenant');
 
+    Route::post('/client' , 'Auth\RegisterController@store');
+    Route::post('/sanctum/token' , 'Auth\AuthClientController@auth');
+
+});
+
+
+Route::post('/sanctum/token' , 'Api\Auth\AuthClientController@auth');
+
+
+
+
+Route::group([
+    'middleware' => ['auth:sanctum']
+], function (){
+
+    Route::get('/auth/me' , 'Api\Auth\AuthClientController@me');
+    Route::post('/auth/logout' , 'Api\Auth\AuthClientController@logout');
 });
