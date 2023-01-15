@@ -3,8 +3,6 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Hash;
-
-use function PHPUnit\Framework\returnSelf;
 use App\Repositories\Contracts\ClientRepositoryInterface;
 
 class ClientService
