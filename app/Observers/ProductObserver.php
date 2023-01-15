@@ -17,6 +17,8 @@ class ProductObserver
     {   //$ascii = Str::ascii($product->name);
         //$product->url = Str::kebab($ascii);
         $product->url = Str::slug($product->name);
+        $product->uuid = Str::uuid();
+
     }
 
     /**

@@ -27,9 +27,9 @@ class ProductService
 
     }
 
-    public function getProductByUrl(string $url)
+    public function getProductByUuid(string $identify)
     {
-        return $this->productRepository->getProductByUrl($url);
+        return $this->productRepository->getProductByUuid($identify);
     }
 
 }

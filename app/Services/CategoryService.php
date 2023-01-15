@@ -27,8 +27,8 @@ class CategoryService
 
     }
 
-    public function getCategoryByUrl(string $url)
+    public function getCategoryByUuid(string $identify)
     {
-        return $this->categoryRepository->getCategoryByUrl($url);
+        return $this->categoryRepository->getCategoryByUuid($identify);
     }
 }

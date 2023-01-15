@@ -27,8 +27,8 @@ class TableService
 
     }
 
-    public function getTableByName(string $url)
+    public function getTableByUuid(string $identify)
     {
-        return $this->tableRepository->getTableByName($url);
+        return $this->tableRepository->getTableByUuid($identify);
     }
 }

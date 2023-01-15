@@ -15,9 +15,12 @@ class TenantObserver
     * @param  Illuminate\Database\Eloquent\Model $model
     * @return void
     */
-   public function creating(Model $model)
-   {
-       $model->tenant_id = app(ManagementTenant::class)->getTenantIdentify();
-   }
+    public function creating(Model $model)
+    {
+        $identify = app(ManagementTenant::class)->getTenantIdentify();
+
+        if($identify)
+            $model->tenant_id = $identify;
+    }    
 
 }

@@ -15,8 +15,8 @@ class ProductResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'identify' => $this->uuid,
             'name' => $this->name,
-            'url' => $this->url,
             'image' => $this->image ? url("storage/{$this->image}") : url("storage/no-photo.jpg"),
             'price' => $this->price,
             'description' => $this->description

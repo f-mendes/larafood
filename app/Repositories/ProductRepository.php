@@ -24,7 +24,7 @@ class ProductRepository implements ProductRepositoryInterface
         ->where('categories.tenant_id', $id)
         ->where(function ($query) use($categories){
             if(!empty($categories)){
-                $query->whereIn('categories.url', $categories);
+                $query->whereIn('categories.uuid', $categories);
             }
         })
         ->select('products.*')
@@ -32,9 +32,9 @@ class ProductRepository implements ProductRepositoryInterface
 
     }
 
-    public function getProductByUrl(string $url)
+    public function getProductByUuid(string $identify)
     {
-        return DB::table($this->table)->where('url', $url)->first();
+        return DB::table($this->table)->where('uuid', $identify)->first();
 
     }
 

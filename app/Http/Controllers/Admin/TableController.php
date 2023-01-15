@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Tables;
+use App\Models\Table;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateTable;
@@ -11,7 +11,7 @@ class TableController extends Controller
 {   
     protected $repository;
 
-    public function __construct(Tables $table)
+    public function __construct(Table $table)
     {
         $this->repository = $table;
 
