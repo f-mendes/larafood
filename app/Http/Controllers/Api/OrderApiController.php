@@ -24,4 +24,21 @@ class OrderApiController extends Controller
 
        return new OrderResource($order);
     }
+
+    public function show($identify)
+    {
+        $order = $this->orderService->getOrderByIdentify($identify);
+        if(!$order){
+            return response()->json(['message', 'Not Found'],404);
+        }
+
+        return new OrderResource($order);
+    }
+
+    public function myOrders()
+    {
+        $orders = $this->orderService->ordersByIdClient();
+
+        return OrderResource::collection($orders);
+    }
 }

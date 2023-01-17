@@ -15,5 +15,7 @@ interface OrderRepositoryInterface
 
     );
     public function getOrderByIdentify(string $identify);
+    public function registerProductOrder(int $ortderId, array $products);
+    public function ordersByIdClient(int $idClient);
 
 }

@@ -8,12 +8,12 @@ use Illuminate\Support\Str;
 class ClientObserver
 {
     /**
-     * Handle the client "created" event.
+     * Handle the client "creating" event.
      *
      * @param  \App\Client  $client
      * @return void
      */
-    public function created(Client $client)
+    public function creating(Client $client)
     {
         $client->uuid = Str::uuid();
     }

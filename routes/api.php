@@ -24,7 +24,7 @@ Route::group([
 
 
     Route::post('/client' , 'Auth\RegisterController@store');
-    Route::post('/sanctum/token' , 'Auth\AuthClientController@auth');
+   
 
 });
 
@@ -37,4 +37,6 @@ Route::group([
 
     Route::get('/auth/me' , 'Api\Auth\AuthClientController@me');
     Route::post('/auth/logout' , 'Api\Auth\AuthClientController@logout');
+    Route::post('/auth/orders', 'Api\OrderApiController@store');
+    Route::get('/auth/my-orders', 'Api\OrderApiController@myOrders');
 });
