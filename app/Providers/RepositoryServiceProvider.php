@@ -10,7 +10,8 @@ use App\Repositories\Contracts\{
     TableRepositoryInterface,
     ProductRepositoryInterface,
     ClientRepositoryInterface,
-    OrderRepositoryInterface
+    OrderRepositoryInterface,
+    EvaluationRepositoryInterface
 };
 
 use App\Repositories\{
@@ -19,7 +20,8 @@ use App\Repositories\{
     TableRepository,
     ProductRepository,
     ClientRepository,
-    OrderRepository
+    OrderRepository,
+    EvaluationRepository
 };
 
 
@@ -62,6 +64,12 @@ class RepositoryServiceProvider extends ServiceProvider
             OrderRepositoryInterface::class,
             OrderRepository::class
         );
+
+        $this->app->bind(
+            EvaluationRepositoryInterface::class,
+            EvaluationRepository::class
+        );
+
 
 
     }

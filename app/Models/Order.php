@@ -32,5 +32,10 @@ class Order extends Model
         return $this->belongsTo(Table::class);
     }
 
+    public function evaluation()
+    {
+        return $this->belongsTo(Evaluation::class);
+    }
+
     
 }
