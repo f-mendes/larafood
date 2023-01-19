@@ -23,13 +23,13 @@ Route::group([
 
 
 
-    Route::post('/client' , 'Auth\RegisterController@store');
+   
    
 
 });
 
-
-Route::post('/sanctum/token' , 'Api\Auth\AuthClientController@auth');
+Route::post('/auth/client' , 'Api\Auth\RegisterController@store');
+Route::post('/auth/token' , 'Api\Auth\AuthClientController@auth');
 
 Route::group([
     'middleware' => ['auth:sanctum']
