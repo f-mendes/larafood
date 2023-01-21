@@ -8,12 +8,10 @@ use Faker\Generator as Faker;
 
 $factory->define(Product::class, function (Faker $faker) {
     return [
-        'tenant_id' => function (array $attributes) {
-            return $attributes['tenant_id'];
-        },
+        'tenant_id' => factory(Tenant::class),
         'name' => $faker->unique()->name, 
         'description' => $faker->sentence,
         'image' => 'cerveja.png',
-        'price' => 4.99
+        'price' => 12.9
     ];
 });

@@ -65,7 +65,7 @@ class CategoryTest extends TestCase
     public function testGetCategoryByTenant()
     {
         $tenant = factory(Tenant::class)->create();
-        $category = factory(Category::class)->create(['tenant_id'=>$tenant->id]);
+        $category = factory(Category::class)->create(['tenant_id' => $tenant->id]);
 
         $response = $this->getJson("/api/v1/categories/{$category->uuid}?token_company={$tenant->uuid}");
 

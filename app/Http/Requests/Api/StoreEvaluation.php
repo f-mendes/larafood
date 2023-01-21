@@ -14,11 +14,17 @@ class StoreEvaluation extends FormRequest
      */
     public function authorize()
     {
-        $client = auth()->user();
-        
-        $order = app(OrderRepositoryInterface::class)->getOrderByIdentify($this->identify);
+        if (!$client = auth()->user()) {
+            return false;
+        }
 
-        return $order->client_id == $client->id;
+
+        if (!$order = app(OrderRepositoryInterface::class)->getOrderByIdentify($this->identify)) {
+            return false;
+        }
+
+       
+        return $client->id == $order->client_id;
     }
 
     /**

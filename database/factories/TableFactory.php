@@ -3,13 +3,12 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Models\Table;
+use App\Models\Tenant;
 use Faker\Generator as Faker;
 
 $factory->define(Table::class, function (Faker $faker) {
     return [
-        'tenant_id' => function (array $attributes) {
-            return $attributes['tenant_id'];
-        },
+        'tenant_id' => factory(Tenant::class),
         'name' => 'Mesa ' . $faker->unique()->name, 
         'description' => $faker->sentence,
     ];
