@@ -8,6 +8,8 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function()
 
     // });
 
+    Route::get('/', 'DashboardController@home')->name('admin.index');
+
     //User x Roles
     Route::get('users/{id}/role/{idPermission}', 'ACL\RoleUserController@detachRoleUser')->name('users.roles.detach');
     Route::post('users/{id}/roles', 'ACL\RoleUserController@attachRolesUser')->name('users.roles.attach');
@@ -45,7 +47,7 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function()
     //Product
     Route::resource('products', 'ProductController');
     Route::any('products/search', 'ProductController@search')->name('products.search');
-    Route::get('/', 'ProductController@index')->name('admin.index');
+   
 
     //Category
     Route::resource('categories', 'CategoryController');

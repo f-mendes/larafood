@@ -20,6 +20,7 @@ use App\Observers\{
     ProductObserver,
     TableObserver
 };
+use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -46,5 +47,14 @@ class AppServiceProvider extends ServiceProvider
         Product::observe(ProductObserver::class);
         Table::observe(TableObserver::class);
         Client::observe(ClientObserver::class);
+
+         /**
+         * Custom If Statements
+         */
+        Blade::if('admin', function () {
+            $user = auth()->user();
+
+            return $user->isAdmin();
+        });
     }
 }
