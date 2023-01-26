@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Models\Tenant;
 use App\Models\Plan;
 use Illuminate\Database\Seeder;
