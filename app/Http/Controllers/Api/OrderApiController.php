@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\OrderCreated;
 use Illuminate\Http\Request;
 use App\Services\OrderService;
 use App\Http\Controllers\Controller;
@@ -10,7 +11,7 @@ use App\Http\Resources\OrderResource;
 
 class OrderApiController extends Controller
 {
-    
+
     protected $orderService;
 
     public function __construct(OrderService $orderService)
@@ -21,6 +22,8 @@ class OrderApiController extends Controller
     public function store(StoreOrder $request)
     {
        $order = $this->orderService->createNewOrder($request->all());
+
+       broadcast(new OrderCreated($order));
 
        return new OrderResource($order);
     }

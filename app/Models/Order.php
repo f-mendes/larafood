@@ -8,8 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use TenantTrait;
-    
+
     protected $fillable = ['identify', 'client_id', 'table_id', 'total', 'status', 'comment','tenant_id'];
+
+      /**
+     * Options status
+     */
+    public $statusOptions = [
+        'open' => 'Aberto',
+        'done' => 'Completo',
+        'rejected' => 'Rejeitado',
+        'working' => 'Andamento',
+        'canceled' => 'Cancelado',
+        'delivering' => 'Em transito',
+    ];
+
 
 
     public function products()
@@ -36,5 +49,5 @@ class Order extends Model
     {
         return $this->hasMany(Evaluation::class);
     }
-    
+
 }
