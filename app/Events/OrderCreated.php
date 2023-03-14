@@ -44,7 +44,9 @@ class OrderCreated
      * @return array
      */
     public function broadcastWith()
-    {
-        return ['order' => (new OrderResource($this->order))->resolve()];
+    {   
+        $order = new OrderResource($this->order);
+        
+        return ['order' => ($order)->resolve()];
     }
 }

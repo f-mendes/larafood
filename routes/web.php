@@ -7,7 +7,8 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function()
     //     auth()->user()->permissionsRole();
 
     // });
-
+    
+    Route::get('orders', 'OrderController@index')->name('orders.index');
     Route::get('/', 'DashboardController@home')->name('admin.index');
 
     //User x Roles
